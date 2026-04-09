@@ -59,7 +59,7 @@ class _UrunlistesisayfaState extends State<Urunlistesisayfa> {
             ),
             subtitle: Text(gelenUrun.aciklama, maxLines: 1, overflow: TextOverflow.ellipsis),
             trailing: Text(
-              "₺${gelenUrun.fiyat}",
+              gelenUrun.fiyat,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.cyan,

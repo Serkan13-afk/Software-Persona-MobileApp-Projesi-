@@ -2,7 +2,7 @@ class Urunler {
   final int id;
   final String ad;
   final String url;
-  final double fiyat;
+  final String fiyat;
   final String aciklama;
   final double puan;
 
@@ -17,23 +17,22 @@ class Urunler {
 
   factory Urunler.fromJson(Map<String, dynamic> json) {
     return Urunler(
-      id: json['id'],
-      ad: json['ad'],
-      url: json['url'],
-      fiyat: (json['fiyat'] as num).toDouble(),
-      aciklama: json['aciklama'],
-      puan: (json['puan'] as num).toDouble(),
+      id: json['id'] ?? 0,
+      ad: json['name'] ?? 'Bilinmeyen',
+      url: json['image'] ?? '',
+      fiyat: json['price']?.toString() ?? '',
+      aciklama: json['description'] ?? '',
+      puan: 4.5,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'ad': ad,
-      'url': url,
-      'fiyat': fiyat,
-      'aciklama': aciklama,
-      'puan': puan,
+      'name': ad,
+      'image': url,
+      'price': fiyat,
+      'description': aciklama,
     };
   }
 }

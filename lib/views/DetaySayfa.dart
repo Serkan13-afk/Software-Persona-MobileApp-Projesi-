@@ -92,7 +92,7 @@ class _DetaysayfaState extends State<Detaysayfa> {
                         ),
                         SizedBox(width: 10),
                         Text(
-                          "₺${widget.urun.fiyat}",
+                          widget.urun.fiyat,
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,

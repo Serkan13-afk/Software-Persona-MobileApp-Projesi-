@@ -120,7 +120,7 @@ class _AnasayfaState extends State<Anasayfa> {
                      mainAxisSize: MainAxisSize.min,
                      children: [
                        Text(urun.ad, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12), textAlign: TextAlign.center, maxLines: 1, overflow: TextOverflow.ellipsis),
-                       Text("₺${urun.fiyat}", style: const TextStyle(color: Colors.cyanAccent, fontSize: 12)),
+                       Text(urun.fiyat, style: const TextStyle(color: Colors.cyanAccent, fontSize: 12)),
                      ]
                    )
                 )
