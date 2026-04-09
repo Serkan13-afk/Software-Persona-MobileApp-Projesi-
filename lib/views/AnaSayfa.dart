@@ -17,6 +17,7 @@ class _AnasayfaState extends State<Anasayfa> {
   List<Urunler> _tumUrunler = [];
   List<Urunler> _filtrelenmisUrunler = [];
   bool _yukleniyor = true;
+  bool _temaKaranlik = false;
 
   @override
   void initState() {
@@ -39,6 +40,27 @@ class _AnasayfaState extends State<Anasayfa> {
     textEditingController.dispose();
     super.dispose();
   }
+
+Widget listTileYapisi(IconData icon, String baslik, String aciklama , VoidCallback onTap){
+  return ListTile(
+    onTap: onTap,
+    leading: Icon(icon, color: Colors.cyan),
+    title: Text(baslik, style: const TextStyle(fontWeight: FontWeight.bold)),
+    subtitle: Text(aciklama),
+    trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+  );
+}
+
+Widget switchTileYapisi(IconData icon, String baslik, String aciklama, bool deger, ValueChanged<bool> onChanged){
+  return SwitchListTile(
+    value: deger,
+    onChanged: onChanged,
+    title: Text(baslik, style: const TextStyle(fontWeight: FontWeight.bold)),
+    subtitle: Text(aciklama),
+    secondary: Icon(icon, color: Colors.cyan),
+    activeColor: Colors.cyan,
+  );
+}
 
   // Arama çubuğu biraz daha estetik hale getirildi
   Widget searchBar(double g, double y) {
@@ -218,8 +240,8 @@ class _AnasayfaState extends State<Anasayfa> {
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
-          children: const [
-            UserAccountsDrawerHeader(
+          children:  [
+            const UserAccountsDrawerHeader(
               accountName: Text("Serkan"),
               accountEmail: Text("serkan@ornek.com"),
               currentAccountPicture: CircleAvatar(
@@ -228,7 +250,26 @@ class _AnasayfaState extends State<Anasayfa> {
               ),
               decoration: BoxDecoration(color: Colors.cyan),
             ),
-            // Buraya ListTile ile diğer menü elemanlarını ekleyebilirsin
+            
+            listTileYapisi(Icons.mail, "Mail", "İletişime geçin", (){
+             // Navigator.push(context, MaterialPageRoute(builder: (context) => MailSayfa()));
+            }),
+            
+            switchTileYapisi(Icons.dark_mode, "Tema", "Karanlık/Aydınlık", _temaKaranlik, (val) {
+              setState(() {
+                _temaKaranlik = val;
+              });
+            }),
+            
+            listTileYapisi(Icons.language, "Dil", "Uygulama dilini değiştir", (){
+             // Navigator.push(context, MaterialPageRoute(builder: (context) => DilSayfa()));
+            }),
+            
+            listTileYapisi(Icons.info, "Hakkında", "Uygulama hakkında bilgi", (){
+            // Navigator.push(context, MaterialPageRoute(builder: (context) => HakkindaSayfa()));
+            }),
+            
+            
           ],
         ),
       ),
