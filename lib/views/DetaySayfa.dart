@@ -48,7 +48,7 @@ class _DetaysayfaState extends State<Detaysayfa> {
               child: Container(
                 height: yukseklik * 0.45,
                 width: double.infinity,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(widget.urun.url), // Dinamik ürün resmi
                     fit: BoxFit.cover,
@@ -79,7 +79,7 @@ class _DetaysayfaState extends State<Detaysayfa> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Expanded(
                           child: Text(
                             widget.urun.ad,
